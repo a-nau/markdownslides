@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% assign page_name = page.name | split:'.' | first %}
+  <a class="github-fork-ribbon right-top" href="{{site.githuburl}}tree/gh-pages/slides/{{page_name}}/_posts" data-ribbon="Improve me on GitHub" title="Improve me on GitHub">Improve me on GitHub</a>
+	<div class="reveal">
+    <div class='footer' style="position: absolute; bottom: 1em; left: 1em; font-size: 0.5em;">
+      {{page.footer}}
+    </div>
+		<div class="slides">
+      {% for post in site.categories[page_name] reversed %}
+        {% include slide_md.html post=page %}
+      {% endfor %}
+		</div>
+	</div>
+	{% include script.html %}
+</body>
+</html>
+

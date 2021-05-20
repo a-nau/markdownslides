@@ -1,0 +1,38 @@
+<script src="{{ site.baseurl }}/assets/reveal.js/dist/reveal.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/notes/notes.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/search/search.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="{{ site.baseurl }}/assets/reveal.js/plugin/math/math.js"></script>
+
+
+<!-- reveal.js init -->
+<script>
+  // Full list of configuration options available here:
+  // https://revealjs.com/config/
+  Reveal.initialize({
+    {% if site.reveal %}
+    {% for attr in site.reveal %}{{attr[0]}}: {% unless {attr[1]} == false or {attr[1]} == true %}'{{attr[1]}}',{% else %}{{attr[1]}},{% endunless %}
+    {% endfor %}
+    {% endif %}
+    math: {
+      // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+      config: 'TeX-AMS_HTML-full',
+      TeX: {
+        Macros: {
+          R: '\\mathbb{R}',
+          set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+        }
+      }
+    },
+    plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath]
+  });
+
+  {% if site.slideNumber.format and site.slideNumber.format != "none" %}
+  // Shows the slide number using default formatting
+  Reveal.configure({ slideNumber: true });
+  Reveal.configure({ slideNumber: '{{ site.slideNumber.format }}' });
+  {% endif %}
+</script>
+<!-- End reveal.js init -->

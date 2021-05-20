@@ -1,0 +1,23 @@
+{% assign post = include.post %}
+{% capture asset_folder %}assets/slides/{{ page_name }}{% endcapture %}
+{% assign file_ending = post.path | split:'.' | last %}
+{% if file_ending == "html" %}
+  {{ post.content }}
+{% else %}
+  {% capture my_include %}{% include_relative {{ post.path }} %}{% endcapture %}
+  {% assign slide_contents = my_include | split: site.markdown_slide_separator %}
+  {% assign file = post.path | split:'/' | last %}
+  {% assign filename = file | split:'.' | first %}
+  {% assign filename_no_data = filename | replace: '0000-1-1-', '' %}
+  {% for slide_content in slide_contents %}
+    {% if forloop.index == 1 %}
+      <section id="{{ filename_no_data }}" data-markdown>
+    {% else %}
+      <section data-markdown>
+    {% endif %}
+      <textarea data-template>
+        {{ slide_content }}
+      </textarea>
+    </section>
+  {% endfor %}
+{% endif %}
