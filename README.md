@@ -14,7 +14,34 @@ It is powered by [reveal.js](https://revealjs.com/), an awesome project by [Haki
 
 ## How to set up and use it?
 
-Fork the project and see the [introduction](https://a-nau.github.io/markdownslides/getting_started#/02_intro) slides!
+Check out the [introduction](https://a-nau.github.io/markdownslides/getting_started#/02_intro) slides to see how to use this repo!
+
+You can set up the project both locally and hosted on Github Pages.
+
+### Github Pages
+
+Just fork the project, and [rename](https://docs.github.com/en/github/administering-a-repository/managing-branches-in-your-repository/renaming-a-branch) your main branch to `gh-pages`.
+
+That's it :)
+
+### Locally
+
+Clone the project including submodules using
+
+```bash
+git clone --recursive https://github.com/a-nau/markdownslides.git
+```
+
+The you can either [install Jekyll](https://jekyllrb.com/docs/installation/) and [run](https://jekyllrb.com/docs/usage/) it or use the provided Docker image.
+
+We recommend using the Docker image by following these steps:
+
+- [Install Docker](https://docs.docker.com/get-docker/) if you haven't already
+- Build the Docker image using `docker build -t jekyll .`
+- Run markdownslides with `docker run -v ${PWD}:/app -p 4000:4000 -it --rm --name markdownslides jekyll`
+- Reach the website under [http://localhost:4000/markdownslides/](http://localhost:4000/markdownslides/)
+
+For more information, also check out this [blog post](https://alcher.dev/2020/jekyll-on-docker/).
 
 ## What can it do?
 
