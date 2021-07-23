@@ -1,4 +1,4 @@
-FROM jekyll/jekyll:4.0
+FROM jekyll/jekyll:4.2.0
 
 WORKDIR /app
 
