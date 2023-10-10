@@ -1,6 +1,6 @@
 # Basic config, that must be set correctly
-baseurl: /markdownslides
-githuburl: https://github.com/a-nau/markdownslides/
+baseurl: /gitops_iko_slides
+githuburl: https://pidtoo.github.io/gitops_iko_slides/
 
 # Further config
 markdown_slide_separator: ---
